@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dustin.mybatis.mapper.TUserMapper">
+    <resultMap id="userMap" type="com.dustin.mybatis.entity.TUser">
+        <id column="id" property="id" jdbcType="INTEGER"/>
+        <result column="name" property="name" jdbcType="VARCHAR"></result>
+        <result column="password" property="password" jdbcType="VARCHAR"></result>
+        <result column="age" property="age" jdbcType="INTEGER"></result>
+    </resultMap>
+
+    <insert id="addUser" parameterType="com.dustin.mybatis.entity.TUser">
+        insert into t_user
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="name != null and name != ''">
+                name,
+            </if>
+            <if test="password != null and password != ''">
+                password,
+            </if>
+            <if test="age != null">
+                age,
+            </if>
+        </trim>
+        <trim prefix=" values(" suffix=")" suffixOverrides=",">
+            <if test="name != null and name != ''">
+                #{name},
+            </if>
+            <if test="password != null and password != ''">
+                #{password},
+            </if>
+            <if test="age != null">
+                #{age},
+            </if>
+        </trim>
+    </insert>
+
+    <delete id="deleteUser" parameterType="com.dustin.mybatis.entity.TUser">
+        delete from  t_user  where id = #{id}
+    </delete>
+    
+    <update id="updateUser" parameterType="com.dustin.mybatis.entity.TUser">
+        update t_user
+        <set>
+            <if test="name != null and name != ''">
+                name = #{name},
+            </if>
+            <if test="password != null and password != ''">
+                password = #{password},
+            </if>
+            <if test="age != null">
+                age = #{age},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+    
+    <select id="findUserById" resultMap="userMap">
+        select id,name,password,age from t_user
+        where id = #{id}
+    </select>
+
+    <select id="queryUserList" resultMap="userMap">
+        select id,name,password,age from t_user
+    </select>
+</mapper>

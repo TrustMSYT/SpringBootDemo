@@ -1,4 +1,4 @@
-package com.xxl.helloworld.contorller;
+package com.dustin.mybatis.contorller;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;

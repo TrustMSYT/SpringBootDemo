@@ -3,12 +3,13 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.xxl</groupId>
+    <groupId>com.dustin</groupId>
     <artifactId>demo</artifactId>
     <version>0.0.1-SNAPSHOT</version>
 
     <modules>
         <module>hello_world</module>
+        <module>mybatis_demo</module>
     </modules>
 
     <name>demo</name>
@@ -31,6 +32,12 @@
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>hello_world</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>mybatis_demo</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
 
